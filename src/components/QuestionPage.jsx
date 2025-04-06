@@ -45,14 +45,15 @@ function QuestionPage() {
             })}
           />
         </div>
-        <div className='bg-white rounded-2xl p-6 space-y-5 w-80 sm:w-md md:w-lg '>
+        <div className='bg-white rounded-2xl p-6 space-y-5 w-80 sm:w-md md:w-lg flex flex-col gap-4'>
           <div className='text-center font-semibold md:text-2xl'>{currentQuestion.question}</div>
           <div className='space-y-2'>
             {currentQuestion.options.map((option, idx) => (
             <button
               key={idx}
               onClick={() => handleOptionClick(option)}
-              className="text-left flex flex-col md:text-lg border border-gray-300 rounded-xl w-full py-4 ps-4 cursor-pointer hover:bg-indigo-500 hover:text-white hover:transition-all hover:ease-in-out hover:duration-500 hover:-translate-y-1 delay-0"
+              className="text-left flex flex-col border border-gray-200 rounded-xl w-full py-4 ps-4 cursor-pointer hover:bg-indigo-500 hover:text-white hover:transition-all hover:ease-in-out hover:duration-500 hover:-translate-y-1 delay-0"
+              style={{ fontFamily: 'Poppins, sans-serif' }}
             >
               {option.text}
             </button>
