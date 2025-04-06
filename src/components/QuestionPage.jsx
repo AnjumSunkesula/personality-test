@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import questions from '../data/questions';
 import 'react-circular-progressbar/dist/styles.css'
 import { CircularProgressbar,buildStyles } from 'react-circular-progressbar';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 function QuestionPage() {
+
+  const navigate = useNavigate();
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState([]); 
@@ -22,9 +25,11 @@ function QuestionPage() {
     if (currentIndex + 1 < totalQuestions) {
       setCurrentIndex(currentIndex + 1);
     } else {
-      onComplete(newAnswers); // send answers to App
+      navigate('/results', {state: { answers: newAnswers } })
     }
   };
+
+
 
 
 
