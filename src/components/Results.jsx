@@ -1,7 +1,7 @@
 import React from 'react';
 import traits from '../data/traits';
 import { useLocation } from 'react-router-dom';
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip, Cell, LabelList } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip, Cell, CartesianGrid } from 'recharts';
 
 
 
@@ -60,11 +60,11 @@ const barColors = [
     <div className="p-6 max-w-xl mx-auto">
       <h2 className="text-2xl font-bold mb-4">Your Personality Result</h2>
 
-      <ResponsiveContainer width="100%" height={400}>
+      <ResponsiveContainer width="100%">
         <BarChart
           data={topTraits}
           layout="vertical"
-          margin={{ top: 20, right: 50, left: 80, bottom: 20 }}
+          margin={{ top: 80, right: 16, left: 0, bottom: 80 }}
         >
           <XAxis 
             type="number" 
@@ -72,6 +72,7 @@ const barColors = [
             ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]} 
             tick={{ fontSize: 12 }}
             tickFormatter={(value) => `${value}%`}
+            interval={0}
           />
           
           <YAxis
@@ -80,17 +81,20 @@ const barColors = [
             tick={{ fontSize: 14 }}
             width={100}
           />
+
+          <CartesianGrid strokeDasharray="3 3" vertical={true} horizontal={false} />
+
           <Tooltip
             formatter={(value) => `${value}%`}
             cursor={{ fill: 'rgba(0,0,0,0.05)' }}
             contentStyle={{ fontSize: '14px', borderRadius: '8px' }}
           />
 
-          <Bar dataKey="percent" barSize={20}>
+          <Bar dataKey="percent" barSize={25}>
             {topTraits.map((_, index) => (                 //the first argument _ is intentionally unused
               <Cell key={`cell-${index}`} fill={barColors[index % barColors.length]} />
             ))}
-           <LabelList dataKey="percent" position="right" formatter={(value) => `${value}%`} />
+           {/* <LabelList dataKey="percent" position="right" formatter={(value) => `${value}%`} /> */}
           </Bar>
         </BarChart>
       </ResponsiveContainer>
