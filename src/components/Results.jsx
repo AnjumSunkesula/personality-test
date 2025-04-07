@@ -10,16 +10,16 @@ const CustomTooltip = ({ active, payload }) => {
     const item = payload[0].payload; // Contains trait, percent, color
     const color = item.color || "#ccc"; // Fallback if color not found
     return (
-      <div className="relative bg-white shadow-md  rounded-sm p-3 text-sm">
+      <div className="relative bg-black text-white shadow-md  rounded-sm p-1 text-sm">
         {/* Arrow */}
-        <div className="absolute left-[-8px] top-1/2 transform -translate-y-1/2 w-0 h-0 border-t-8 border-b-8 border-r-8 border-t-transparent border-b-transparent border-r-white"></div>
+        <div className="absolute left-[-8px] top-1/2 transform -translate-y-1/2 w-0 h-0 border-t-8 border-b-8 border-r-8 border-t-transparent border-b-transparent border-r-black"></div>
 
         {/* Content */}
         <div className="flex items-center space-x-2">
           <div
             style={{ backgroundColor: color, width: 15, height: 15 }}
           />
-          <span className="font-semibold">{item.trait}</span>
+          <span className="capitalize">{item.trait}</span>
           <div>{item.percent}%</div>
         </div>
       </div>
@@ -81,17 +81,16 @@ function Results() {
   });
 
   const dominantTrait = topTraits[0];
-  // bar colors
 
 
   
 
 
   return (
-    <div className="p-6 max-w-xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Your Personality Result</h2>
+    <div className="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
 
-      <ResponsiveContainer width="100%" height={400}>
+      <div className='bg-white rounded-xl pr-10 pl-5 w-full max-w-2xl'>
+        <ResponsiveContainer width="100%" height={400}>
         <BarChart
           data={topTraits}
           layout="vertical"
@@ -111,6 +110,7 @@ function Results() {
             type="category"
             tick={{ fontSize: 14 }}
             width={100}
+            className='capitalize'
           />
 
           <CartesianGrid strokeDasharray="3 3" vertical={true} horizontal={false} />
@@ -130,11 +130,12 @@ function Results() {
           </Bar>
         </BarChart>
       </ResponsiveContainer>
+      </div>
 
 
-      <div className="mt-6 bg-indigo-100 p-4 rounded-lg text-indigo-800 font-semibold">
-      <h3 className="text-xl mb-2">{traits[dominantTrait.trait]?.title}</h3>
-      <p className="text-sm font-normal text-gray-700">
+      <div className="mt-6 bg-indigo-100 p-10 rounded-xl text-indigo-800 font-semibold w-full max-w-2xl">
+      <h3 className="text-4xl mb-2 text-center text-white font-bold">{traits[dominantTrait.trait]?.title}</h3>
+      <p className="text-sm font-normal text-white">
         {traits[dominantTrait.trait]?.description}
       </p>
       </div>
