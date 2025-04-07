@@ -10,42 +10,32 @@ function Results() {
   const { state } = useLocation();
   const answers = state?.answers || [];
 
-  // Count how many times each trait appears
-  const traitCounts = {};
+    const traitScores = {};
+
+  // Step 1: Tally up +5 per trait
   answers.forEach(answer => {
     const trait = answer.trait;
     if (trait) {
-      traitCounts[trait] = (traitCounts[trait] || 0) + 1;
+      traitScores[trait] = (traitScores[trait] || 0) + 5;
     }
   });
 
-  
+  // Step 2: Normalize by total possible score
+   // Step 2: Normalize using max score method (Option 2)
+  const maxScore = Math.max(...Object.values(traitScores));
+  const traitPercentages = Object.entries(traitScores).map(([trait, score]) => {
+    const percent = Math.round((score / maxScore) * 100);
+    return { trait, percent };
+  });
 
 
-  // Convert to percentages
-  const total = answers.length;
-  const traitPercentages = Object.entries(traitCounts).map(([trait, count]) => ({
-    trait,
-    percent: Math.round((count / total) * 100)
-  }));
+  // Step 3: Sort and select top 8 traits
+  const topTraits = [...traitPercentages]
+    .sort((a, b) => b.percent - a.percent)
+    .slice(0, 8);
 
-  // Find the top trait
-  const dominantTrait = traitPercentages.reduce((max, curr) =>
-  curr.percent > max.percent ? curr : max, traitPercentages[0]);
-
-  // Sort traits by dominance
-  // traitPercentages.sort((a, b) => b.percent - a.percent);
-
-  // // Get top trait
-  // const dominantTrait = traitPercentages[0];
-
-  // Sort traits by percentage in descending order and get top 8
-const topTraits = [...traitPercentages]
-  .sort((a, b) => b.percent - a.percent)
-  .slice(0, 8);
-
-
-
+  // Step 4: Find dominant trait
+  const dominantTrait = topTraits[0];
   // bar colors
 
 const barColors = [
