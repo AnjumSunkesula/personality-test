@@ -11,8 +11,7 @@ function Results() {
   const answers = state?.answers || [];
 
 
-   // Step 1: Calculate scores
-  const traitScores = {};
+   const traitScores = {};
   answers.forEach(answer => {
     const trait = answer.trait;
     if (trait) {
@@ -20,25 +19,28 @@ function Results() {
     }
   });
 
-  // Step 2: Sort by score
+  // Step 2: Sort by score (descending)
   const sortedTraits = Object.entries(traitScores).sort((a, b) => b[1] - a[1]);
 
-  // Step 3: Normalize based on top trait only
-  const topScore = sortedTraits[0]?.[1] || 1;
+  // Step 3: Define percentage bands based on rank
+  const percentageBands = [
+    [100, 100],  // 1st place fixed at 100%
+    [80, 90],    // 2nd
+    [70, 80],    // 3rd
+    [60, 70],    // 4th
+    [50, 60],    // 5th
+    [40, 50],    // 6th
+    [30, 40],    // 7th
+    [20, 30],    // 8th
+  ];
 
-const traitPercentages = sortedTraits.map(([trait, score], index) => {
-  let percent;
-  if (index === 0) {
-    percent = 100; // force only the top trait to be 100%
-  } else {
-    percent = Math.round((score / (topScore + 1)) * 100); // +1 to reduce percentage for tied values
-  }
-  return { trait, percent };
-});
+  // Step 4: Map top 8 traits to tiered percentages
+  const topTraits = sortedTraits.slice(0, 8).map(([trait], index) => {
+    const [min, max] = percentageBands[index] || [10, 20];
+    const percent = index === 0 ? 100 : Math.floor(Math.random() * (max - min + 1)) + min;
+    return { trait, percent };
+  });
 
-
-  // Step 4: Get top 8
-  const topTraits = traitPercentages.slice(0, 8);
   const dominantTrait = topTraits[0];
   // bar colors
 
