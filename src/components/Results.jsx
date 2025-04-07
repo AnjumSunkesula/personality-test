@@ -10,9 +10,9 @@ function Results() {
   const { state } = useLocation();
   const answers = state?.answers || [];
 
-    const traitScores = {};
 
-  // Step 1: Tally up +5 per trait
+   // Step 1: Calculate scores
+  const traitScores = {};
   answers.forEach(answer => {
     const trait = answer.trait;
     if (trait) {
@@ -20,21 +20,25 @@ function Results() {
     }
   });
 
-  // Step 2: Normalize by total possible score
-   // Step 2: Normalize using max score method (Option 2)
-  const maxScore = Math.max(...Object.values(traitScores));
-  const traitPercentages = Object.entries(traitScores).map(([trait, score]) => {
-    const percent = Math.round((score / maxScore) * 100);
-    return { trait, percent };
-  });
+  // Step 2: Sort by score
+  const sortedTraits = Object.entries(traitScores).sort((a, b) => b[1] - a[1]);
+
+  // Step 3: Normalize based on top trait only
+  const topScore = sortedTraits[0]?.[1] || 1;
+
+const traitPercentages = sortedTraits.map(([trait, score], index) => {
+  let percent;
+  if (index === 0) {
+    percent = 100; // force only the top trait to be 100%
+  } else {
+    percent = Math.round((score / (topScore + 1)) * 100); // +1 to reduce percentage for tied values
+  }
+  return { trait, percent };
+});
 
 
-  // Step 3: Sort and select top 8 traits
-  const topTraits = [...traitPercentages]
-    .sort((a, b) => b.percent - a.percent)
-    .slice(0, 8);
-
-  // Step 4: Find dominant trait
+  // Step 4: Get top 8
+  const topTraits = traitPercentages.slice(0, 8);
   const dominantTrait = topTraits[0];
   // bar colors
 
