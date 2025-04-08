@@ -22,7 +22,12 @@ const traitDescriptions = {
   structured: {
     title: "The Organized Achiever",
     description: "You value routines, clear plans, and consistency. You bring stability and reliability to everything you do."
+  },
+  empathetic: {
+    title: "The Compassionate Listener",
+    description: "You naturally understand and connect with others' emotions. Your ability to empathize brings comfort and support to those around you."
   }
+
 };
 
 export default traitDescriptions;
