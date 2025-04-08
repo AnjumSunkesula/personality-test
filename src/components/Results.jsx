@@ -179,7 +179,9 @@ if (width <= 320) {
       </div>
 
 
-      <div className={`bg-indigo-100 p-10 rounded-xl  font-semibold w-full max-w-3xl ${traitGradients[dominantTrait.trait]}`}>
+      <div className={` relative overflow-hidden bg-indigo-100 p-10 rounded-xl  font-semibold w-full max-w-3xl ${traitGradients[dominantTrait.trait]}`}>
+        <span className="absolute top-0 left-[-75%] w-[50%] h-full bg-white opacity-20 transform skew-x-[-20deg] animate-shine pointer-events-none"></span>
+
         <h3 className="text-4xl mb-2 text-center text-white font-bold">{traits[dominantTrait.trait]?.title}</h3>
         <p className="text-lg font-normal text-white" style={{ fontFamily: "Poppins"}}>
           {traits[dominantTrait.trait]?.description}
