@@ -75,7 +75,7 @@ const questions = [
       { text: "Research deeply", trait: "analytical" },
       { text: "Discuss with others", trait: "social" },
       { text: "Follow Instructions", trait: "structured" },
-      { text: "Experiment hands-on", trait: "prectical" },
+      { text: "Experiment hands-on", trait: "practical" },
     ],
     category: "Learning style"
   },
