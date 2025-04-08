@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import traits from '../data/traits';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip, Cell, CartesianGrid } from 'recharts';
+import confetti from 'canvas-confetti';
+
 
 function useWindowWidth() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -41,6 +43,15 @@ const CustomTooltip = ({ active, payload }) => {
 
 
 function Results() {
+
+  useEffect(() => {
+    confetti({
+      particleCount: 250,
+      spread: 100,
+      origin: { y: 0.7 },
+    });
+  }, []);
+
   const { state } = useLocation();
   const answers = state?.answers || [];
 
