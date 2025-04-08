@@ -1,9 +1,19 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import traits from '../data/traits';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip, Cell, CartesianGrid } from 'recharts';
 
+function useWindowWidth() {
+  const [width, setWidth] = useState(window.innerWidth);
 
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return width;
+}
 
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
@@ -40,6 +50,21 @@ function Results() {
     navigate('/');
   }
 
+  const width = useWindowWidth();
+
+// Adjust tick interval based on screen width
+let tickInterval;
+if (width <= 320) {
+  tickInterval = 4;
+}  else if( width <= 375) {
+  tickInterval = 2;
+} else if( width <= 430) {
+  tickInterval = 1;
+} else {
+  tickInterval = 0; // show all ticks on large screens
+}
+
+
 
    const traitScores = {};
   answers.forEach(answer => {
@@ -54,14 +79,14 @@ function Results() {
 
   // Step 3: Define percentage bands based on rank
   const percentageBands = [
-    [100, 100],  // 1st place fixed at 100%
-    [80, 90],    // 2nd
-    [70, 80],    // 3rd
-    [60, 70],    // 4th
-    [50, 60],    // 5th
-    [40, 50],    // 6th
-    [30, 40],    // 7th
-    [20, 30],    // 8th
+    [100, 100], 
+    [80, 90],    
+    [70, 80],    
+    [60, 70],    
+    [50, 60],    
+    [40, 50],    
+    [30, 40],    
+    [20, 30],    
   ];
   
     const barColors = [
@@ -110,7 +135,7 @@ function Results() {
   return (
     <div className="bg-gray-100 flex flex-col items-center justify-center min-h-screen gap-5">
 
-      <div className='bg-white rounded-xl pr-10 pl-5 w-full max-w-2xl'>
+      <div className='bg-white rounded-xl pr-10 pl-5 w-full max-w-2xl '>
         <ResponsiveContainer width="100%" height={400}>
         <BarChart
           data={topTraits}
@@ -123,7 +148,7 @@ function Results() {
             ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]} 
             tick={{ fontSize: 12 }}
             tickFormatter={(value) => `${value}%`}
-            interval={0}
+            interval={tickInterval}
           />
           
           <YAxis
