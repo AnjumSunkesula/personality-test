@@ -186,10 +186,10 @@ if (width <= 320) {
         </p>
       </div>
 
-      <div className='flex justify-between items-center w-full max-w-3xl '>
-        <div className='bg-white px-5 py-2 rounded-xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{color: dominantTrait.color}}>share results</div>
+      <div className='flex justify-around items-center w-full max-w-3xl '>
+        <div className='bg-white px-5 py-3 rounded-3xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{color: dominantTrait.color}}>share results</div>
         <div 
-          className='bg-white px-5 py-2 rounded-xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{color: dominantTrait.color}}
+          className='bg-white px-5 py-3 rounded-3xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{color: dominantTrait.color}}
           onClick={handleClick}
         >
           retake test
