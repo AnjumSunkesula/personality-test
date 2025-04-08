@@ -1,6 +1,6 @@
 import React from 'react';
 import traits from '../data/traits';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip, Cell, CartesianGrid } from 'recharts';
 
 
@@ -33,6 +33,12 @@ const CustomTooltip = ({ active, payload }) => {
 function Results() {
   const { state } = useLocation();
   const answers = state?.answers || [];
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/');
+  }
 
 
    const traitScores = {};
@@ -80,15 +86,18 @@ function Results() {
     };
   });
 
-  const dominantTrait = topTraits[0];
+ const topTraitsWithDescriptions = topTraits.filter(t => traits[t.trait]);
+  const dominantTrait = topTraitsWithDescriptions[0];
+
 
   const traitGradients = {
   introvert: "bg-gradient-to-r from-blue-100 to-blue-300",
-  extrovert: "bg-gradient-to-r from-pink-100 to-pink-300",
+  extrovert: "bg-gradient-to-r from-pink-600 via-pink-400 to-pink-200",
   analytical: "bg-gradient-to-r from-yellow-100 to-yellow-300",
   creative: "bg-gradient-to-r from-purple-100 to-purple-300",
   adaptable: "bg-gradient-to-r from-teal-100 to-teal-300",
   structured: "bg-gradient-to-r from-orange-100 to-orange-300",
+  empathetic: "bg-gradient-to-r from-cyan-800 to-cyan-400"
 };
 
 
@@ -99,7 +108,7 @@ function Results() {
 
 
   return (
-    <div className="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
+    <div className="bg-gray-100 flex flex-col items-center justify-center min-h-screen gap-5">
 
       <div className='bg-white rounded-xl pr-10 pl-5 w-full max-w-2xl'>
         <ResponsiveContainer width="100%" height={400}>
@@ -145,11 +154,23 @@ function Results() {
       </div>
 
 
-      <div className={`mt-6 bg-indigo-100 p-10 rounded-xl  font-semibold w-full max-w-2xl ${traitGradients[dominantTrait.trait]}`}>
-      <h3 className="text-4xl mb-2 text-center text-white font-bold">{traits[dominantTrait.trait]?.title}</h3>
-      <p className="text-sm font-normal text-white">
-        {traits[dominantTrait.trait]?.description}
-      </p>
+      <div className={`bg-indigo-100 p-10 rounded-xl  font-semibold w-full max-w-2xl ${traitGradients[dominantTrait.trait]}`}>
+        <h3 className="text-4xl mb-2 text-center text-white font-bold">{traits[dominantTrait.trait]?.title}</h3>
+        <p className="text-sm font-normal text-white">
+          {traits[dominantTrait.trait]?.description}
+        </p>
+      </div>
+
+      <div className='flex justify-between items-center w-full max-w-2xl '>
+        <div className='bg-white px-5 py-2 rounded-xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{color: dominantTrait.color}}>share results</div>
+        <div 
+          className='bg-white px-5 py-2 rounded-xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{color: dominantTrait.color}}
+          onClick={handleClick}
+        >
+          retake test
+        </div>
+        
+
       </div>
 
     </div>
