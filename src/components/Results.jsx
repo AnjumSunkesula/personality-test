@@ -17,6 +17,15 @@ function useWindowWidth() {
   return width;
 }
 
+function getRandomColor() {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     const item = payload[0].payload; // Contains trait, percent, color
@@ -100,25 +109,46 @@ if (width <= 320) {
     [20, 30],    
   ];
   
-    const barColors = [
-      "#ec4899", // pink
-      "#f97316", // orange
-      "#facc15", // yellow
-      "#ef4444", // red
-      "#14b8a6", // teal
-      "#8b5cf6", // purple
-      "#f472b6", // light pink
-      "#22d3ee", // cyan
-    ];
+    const barColors = {
+      introvert: '#f97316',
+      extrovert: '#facc15',
+      ambivert:  '#ec4899',
+      empathetic: '#ef4444',
+      disciplined: '#14b8a6',
+      logical: '#8b5cf6',
+      intuitive:'#f472b6' ,
+      collaborative: '#22d3ee',
+      creative: '#38bdf8',
+      resilient: '#84cc16',
+      organized: '#fb7185',
+      flexible: '#6366f1',
+      sensitive: '#10b981',
+      selfAware: '#64748b',
+      rational: '#2dd4bf',
+      assertive: '#fb923c',
+      analytical: '#e9d5ff',
+      social: '#fbcfe8',
+      structured: '#bbf7d0',
+      practical: '#bae6fd',
+      methodical: '#fde68a',
+      adaptive: '#6b7280',
+      strategic: '#166534',
+      optimistic: '#f5deb3',
+      communicative: '#a3a3a3',
+      spontaneous: '#c084fc',
+      ambitious: '#e0bbeb',
+      curious: '#a7c7e7',
+    };
 
   // Step 4: Map top 8 traits to tiered percentages
   const topTraits = sortedTraits.slice(0, 8).map(([trait], index) => {
     const [min, max] = percentageBands[index] || [10, 20];
     const percent = index === 0 ? 100 : Math.floor(Math.random() * (max - min + 1)) + min;
+    const color = barColors[trait] || getRandomColor();
     return { 
       trait, 
       percent,
-      color: barColors[index % barColors.length],
+      color
     };
   });
 
@@ -185,10 +215,9 @@ if (width <= 320) {
             isAnimationActive={true}
             animationDuration={1000}
           >
-            {topTraits.map((_, index) => (                 //the first argument _ is intentionally unused
-              <Cell key={`cell-${index}`} fill={barColors[index % barColors.length]} />
+            {topTraits.map((item, index) => (                 
+              <Cell key={`cell-${index}`} fill={item.color} />
             ))}
-           {/* <LabelList dataKey="percent" position="right" formatter={(value) => `${value}%`} /> */}
           </Bar>
         </BarChart>
       </ResponsiveContainer>
@@ -201,6 +230,9 @@ if (width <= 320) {
         before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white/.5)_50%,transparent_75%)] 
         before:bg-[length:250%_250%,100%_100%] before:bg-no-repeat 
         before:animate-[continuous-shine_2.5s_linear_infinite]`}
+        style={{
+          background: `linear-gradient(to right, ${topTraits[0].color}, ${topTraits[topTraits.length - 1].color})`
+        }}
       >
         <h3 className="text-4xl mb-2 text-center text-white font-bold">{traits[dominantTrait.trait]?.title}</h3>
         <p className="text-lg font-normal text-white" style={{ fontFamily: "Poppins"}}>
