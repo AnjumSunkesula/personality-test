@@ -116,12 +116,12 @@ if (width <= 320) {
 
 
   const traitGradients = {
-  introvert: "bg-gradient-to-r from-blue-100 to-blue-300",
+  introvert: "bg-gradient-to-r from-blue-600 via-blue-400 to-blue-200",
   extrovert: "bg-gradient-to-r from-pink-600 via-pink-400 to-pink-200",
-  analytical: "bg-gradient-to-r from-yellow-100 to-yellow-300",
-  creative: "bg-gradient-to-r from-purple-100 to-purple-300",
-  adaptable: "bg-gradient-to-r from-teal-100 to-teal-300",
-  structured: "bg-gradient-to-r from-orange-100 to-orange-300",
+  analytical: "bg-gradient-to-r from-yellow-300 to-yellow-100",
+  creative: "bg-gradient-to-r from-purple-300 to-purple-100",
+  adaptable: "bg-gradient-to-r from-teal-300 to-teal-100",
+  structured: "bg-gradient-to-r from-orange-300 to-orange-100",
   empathetic: "bg-gradient-to-r from-cyan-800 to-cyan-400"
 };
 
@@ -179,16 +179,23 @@ if (width <= 320) {
       </div>
 
 
-      <div className={` relative overflow-hidden bg-indigo-100 p-10 rounded-xl  font-semibold w-full max-w-3xl ${traitGradients[dominantTrait.trait]}`}>
-        <span className="absolute top-0 left-[-75%] w-[50%] h-full bg-white opacity-20 transform skew-x-[-20deg] animate-shine pointer-events-none"></span>
-
+      <div 
+        className={` relative overflow-hidden bg-indigo-100 p-10 rounded-xl  font-semibold w-full max-w-3xl ${traitGradients[dominantTrait.trait]}  
+        relative before:absolute before:inset-0 before:rounded-[inherit] 
+        before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white/.5)_50%,transparent_75%)] 
+        before:bg-[length:250%_250%,100%_100%] before:bg-no-repeat 
+        before:animate-[continuous-shine_2.5s_linear_infinite]`}
+      >
         <h3 className="text-4xl mb-2 text-center text-white font-bold">{traits[dominantTrait.trait]?.title}</h3>
         <p className="text-lg font-normal text-white" style={{ fontFamily: "Poppins"}}>
           {traits[dominantTrait.trait]?.description}
         </p>
       </div>
 
-      <div className='flex justify-around items-center w-full max-w-3xl '>
+      <div className='flex justify-around items-center w-full max-w-3xl'>
+        
+    
+
         <div className='bg-white px-5 py-3 rounded-3xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{color: dominantTrait.color}}>share results</div>
         <div 
           className='bg-white px-5 py-3 rounded-3xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{color: dominantTrait.color}}
