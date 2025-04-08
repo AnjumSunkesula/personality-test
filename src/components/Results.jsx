@@ -135,7 +135,7 @@ if (width <= 320) {
   return (
     <div className="bg-gray-100 flex flex-col items-center justify-center min-h-screen gap-5">
 
-      <div className='bg-white rounded-xl pr-10 pl-5 w-full max-w-2xl '>
+      <div className='bg-white rounded-xl pr-10 pl-5 w-full max-w-3xl'>
         <ResponsiveContainer width="100%" height={400}>
         <BarChart
           data={topTraits}
@@ -155,7 +155,7 @@ if (width <= 320) {
             dataKey="trait"
             type="category"
             tick={{ fontSize: 14 }}
-            width={100}
+            width={120}
             className='capitalize'
           />
 
@@ -179,14 +179,14 @@ if (width <= 320) {
       </div>
 
 
-      <div className={`bg-indigo-100 p-10 rounded-xl  font-semibold w-full max-w-2xl ${traitGradients[dominantTrait.trait]}`}>
+      <div className={`bg-indigo-100 p-10 rounded-xl  font-semibold w-full max-w-3xl ${traitGradients[dominantTrait.trait]}`}>
         <h3 className="text-4xl mb-2 text-center text-white font-bold">{traits[dominantTrait.trait]?.title}</h3>
-        <p className="text-sm font-normal text-white">
+        <p className="text-lg font-normal text-white" style={{ fontFamily: "Poppins"}}>
           {traits[dominantTrait.trait]?.description}
         </p>
       </div>
 
-      <div className='flex justify-between items-center w-full max-w-2xl '>
+      <div className='flex justify-between items-center w-full max-w-3xl '>
         <div className='bg-white px-5 py-2 rounded-xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{color: dominantTrait.color}}>share results</div>
         <div 
           className='bg-white px-5 py-2 rounded-xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{color: dominantTrait.color}}
