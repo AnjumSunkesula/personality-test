@@ -82,6 +82,18 @@ function Results() {
 
   const dominantTrait = topTraits[0];
 
+  const traitGradients = {
+  introvert: "bg-gradient-to-r from-blue-100 to-blue-300",
+  extrovert: "bg-gradient-to-r from-pink-100 to-pink-300",
+  analytical: "bg-gradient-to-r from-yellow-100 to-yellow-300",
+  creative: "bg-gradient-to-r from-purple-100 to-purple-300",
+  adaptable: "bg-gradient-to-r from-teal-100 to-teal-300",
+  structured: "bg-gradient-to-r from-orange-100 to-orange-300",
+};
+
+
+
+
 
   
 
@@ -133,7 +145,7 @@ function Results() {
       </div>
 
 
-      <div className="mt-6 bg-indigo-100 p-10 rounded-xl text-indigo-800 font-semibold w-full max-w-2xl">
+      <div className={`mt-6 bg-indigo-100 p-10 rounded-xl  font-semibold w-full max-w-2xl ${traitGradients[dominantTrait.trait]}`}>
       <h3 className="text-4xl mb-2 text-center text-white font-bold">{traits[dominantTrait.trait]?.title}</h3>
       <p className="text-sm font-normal text-white">
         {traits[dominantTrait.trait]?.description}
