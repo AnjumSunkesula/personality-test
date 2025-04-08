@@ -135,7 +135,7 @@ if (width <= 320) {
   return (
     <div className="bg-gray-100 flex flex-col items-center justify-center min-h-screen gap-5">
 
-      <div className='bg-white rounded-xl pr-10 pl-5 w-full max-w-3xl'>
+      <div className='bg-white rounded-xl pr-10 pl-5 w-full max-w-3xl '>
         <ResponsiveContainer width="100%" height={400}>
         <BarChart
           data={topTraits}
@@ -168,7 +168,12 @@ if (width <= 320) {
             )}
           />
 
-          <Bar dataKey="percent" barSize={25}>
+          <Bar 
+            dataKey="percent" 
+            barSize={25}
+            isAnimationActive={true}
+            animationDuration={1000}
+          >
             {topTraits.map((_, index) => (                 //the first argument _ is intentionally unused
               <Cell key={`cell-${index}`} fill={barColors[index % barColors.length]} />
             ))}
@@ -180,7 +185,7 @@ if (width <= 320) {
 
 
       <div 
-        className={` relative overflow-hidden bg-indigo-100 p-10 rounded-xl  font-semibold w-full max-w-3xl ${traitGradients[dominantTrait.trait]}  
+        className={`relative overflow-hidden bg-indigo-100 p-10 rounded-xl  font-semibold w-full max-w-3xl ${traitGradients[dominantTrait.trait]}  
         relative before:absolute before:inset-0 before:rounded-[inherit] 
         before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white/.5)_50%,transparent_75%)] 
         before:bg-[length:250%_250%,100%_100%] before:bg-no-repeat 
