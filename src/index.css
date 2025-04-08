@@ -1,19 +1,17 @@
 @import "tailwindcss";
 
-@keyframes shine {
+/* mirror effect on trait description */
+@keyframes continuous-shine {
   0% {
-    left: -75%;
+    background-position: 200% 0, 0 0;
   }
 
   100% {
-    left: 125%;
+    background-position: -100% 0, 0 0;
   }
 }
 
-.animate-shine {
-  animation: shine 4s infinite linear;
-}
-
+/* the question box */
 @keyframes slideQuestion {
   0% {
     transform: translateY(-12px);
