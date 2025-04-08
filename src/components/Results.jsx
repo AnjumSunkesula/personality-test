@@ -86,7 +86,7 @@ if (width <= 320) {
 
 
 
-   const traitScores = {};
+  const traitScores = {};
   answers.forEach(answer => {
     const trait = answer.trait;
     if (trait) {
@@ -156,26 +156,13 @@ if (width <= 320) {
   const dominantTrait = topTraitsWithDescriptions[0];
 
 
-  const traitGradients = {
-  introvert: "bg-gradient-to-r from-blue-600 via-blue-400 to-blue-200",
-  extrovert: "bg-gradient-to-r from-pink-600 via-pink-400 to-pink-200",
-  analytical: "bg-gradient-to-r from-yellow-300 to-yellow-100",
-  creative: "bg-gradient-to-r from-purple-300 to-purple-100",
-  adaptable: "bg-gradient-to-r from-teal-300 to-teal-100",
-  structured: "bg-gradient-to-r from-orange-300 to-orange-100",
-  empathetic: "bg-gradient-to-r from-cyan-800 to-cyan-400"
-};
-
-
-
-
-
   
 
 
   return (
-    <div className="bg-gray-100 flex flex-col items-center justify-center min-h-screen gap-5">
-
+    <>
+      <div className='bg-gray-100 flex justify-center items-center min-h-screen'>
+        <div className="flex flex-col m-2 gap-5">
       <div className='bg-white rounded-xl pr-10 pl-5 w-full max-w-3xl '>
         <ResponsiveContainer width="100%" height={400}>
         <BarChart
@@ -225,7 +212,7 @@ if (width <= 320) {
 
 
       <div 
-        className={`relative overflow-hidden bg-indigo-100 p-10 rounded-xl  font-semibold w-full max-w-3xl ${traitGradients[dominantTrait.trait]}  
+        className={`overflow-hidden bg-indigo-100 p-10 rounded-xl  font-semibold w-full max-w-3xl 
         relative before:absolute before:inset-0 before:rounded-[inherit] 
         before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white/.5)_50%,transparent_75%)] 
         before:bg-[length:250%_250%,100%_100%] before:bg-no-repeat 
@@ -235,7 +222,7 @@ if (width <= 320) {
         }}
       >
         <h3 className="text-4xl mb-2 text-center text-white font-bold">{traits[dominantTrait.trait]?.title}</h3>
-        <p className="text-lg font-normal text-white" style={{ fontFamily: "Poppins"}}>
+        <p className="text-lg font-normal text-white text-center" style={{ fontFamily: "Poppins"}}>
           {traits[dominantTrait.trait]?.description}
         </p>
       </div>
@@ -256,6 +243,11 @@ if (width <= 320) {
       </div>
 
     </div>
+      </div>
+
+     
+     
+    </>
   );
 }
 
