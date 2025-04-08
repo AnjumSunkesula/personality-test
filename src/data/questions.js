@@ -83,7 +83,7 @@ const questions = [
     question: "Your approach to problem-solving is:",
     options: [
       { text: "Logical analysis", trait: "logical" },
-      { text: "Creative Brainstorming", trait: "reative" },
+      { text: "Creative Brainstorming", trait: "creative" },
       { text: "Team Collaboration", trait: "collaborative" },
       { text: "Step-by-step plan", trait: "methodical" },
     ],
