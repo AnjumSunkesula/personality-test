@@ -19,7 +19,7 @@ const traitDescriptions = {
     title: "The Visionary Creator",
     description: "You think outside the box and express ideas in unique ways. Imagination and originality drive your perspective."
   },
-  adaptable: {
+  adaptive: {
     title: "The Adaptive Innovator",
     description: "You're flexible and quick to respond to change. You see opportunities where others see obstacles."
   },
