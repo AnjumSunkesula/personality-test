@@ -11,21 +11,25 @@ function QuestionPage() {
 
   const navigate = useNavigate();
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [answers, setAnswers] = useState([]); 
+  const [currentIndex, setCurrentIndex] = useState(0);               //track of current question index
+  const [answers, setAnswers] = useState([]);                        // stores selected answers/options
 
-  const currentQuestion = questions[currentIndex];
+  const currentQuestion = questions[currentIndex];                   //retrives the question at current index
   const totalQuestions = questions.length;
   const progressPercent = Math.round((currentIndex / totalQuestions) * 100);
 
-  const handleOptionClick = (option) => {
-    const newAnswers = [...answers, option];
+  const handleOptionClick = (option) => {                       //"option" holds the  selected answer for the current question
+    const newAnswers = [...answers, option];                    // answers hold previously selected options, 'option' holds current selected option, ...answers is used to keep previous answers and add new option to it.all this creates a new array which we store in newAnswers. 
     setAnswers(newAnswers);
 
-    if (currentIndex + 1 < totalQuestions) {
-      setCurrentIndex(currentIndex + 1);
+    if (currentIndex + 1 < totalQuestions) {                    //checking if there are more questions
+      setCurrentIndex(currentIndex + 1);                        //move to the next question
     } else {
-      navigate('/results', {state: { answers: newAnswers } })
+      navigate('/results', {
+        state: { 
+          answers: newAnswers 
+        } 
+      });
     }
   };
 
@@ -51,9 +55,9 @@ function QuestionPage() {
           >
             <div className='text-center font-semibold md:text-2xl'>{currentQuestion.question}</div>
             <div className='space-y-2'>
-              {currentQuestion.options.map((option, idx) => (
+              {currentQuestion.options.map((option, index) => (
                 <button
-                  key={idx}
+                  key={index}
                   onClick={() => handleOptionClick(option)}
                   className="text-left flex flex-col border border-gray-200 rounded-xl w-full py-4 ps-4 cursor-pointer hover:bg-indigo-500 hover:text-white hover:transition-all hover:ease-in-out hover:duration-500 hover:-translate-y-1 delay-0"
                   style={{ fontFamily: 'Poppins, sans-serif' }}
