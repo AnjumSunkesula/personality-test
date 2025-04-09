@@ -65,7 +65,7 @@ const questions = [
       { text: "Take it personally", trait: "sensitive" },
       { text: "Seek clarification", trait: "self-aware" },
       { text: "Analyze Objectively", trait: "rational" },
-      { text: "Defenf your position", trait: "assertive" },
+      { text: "Defend your position", trait: "assertive" },
     ],
     category: "Emotional response"
   },
