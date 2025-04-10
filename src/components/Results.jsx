@@ -218,7 +218,7 @@ function Results() {
 
           {/* Buttons */}
           <div className='flex justify-around items-center w-full max-w-3xl'>
-            <div className='bg-white px-5 py-3 rounded-3xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{ color: dominantTrait.color}} onClick={() => setShowShare(true)}>share results</div>
+            <div className='bg-white px-5 py-3 rounded-3xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{ color: dominantTrait.color}} onClick={() => setShowShare(true)}>invite others</div>
             <ShareModal show={showShare} onClose={() => setShowShare(false)} />
             <div 
               className='bg-white px-5 py-3 rounded-3xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{ color: dominantTrait.color }}
