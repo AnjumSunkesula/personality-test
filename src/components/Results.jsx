@@ -3,6 +3,7 @@ import traits from '../data/traits';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip, Cell, CartesianGrid } from 'recharts';
 import confetti from 'canvas-confetti';
+import ShareModal from './shareModal';
 
 
 function useWindowWidth() {
@@ -145,6 +146,8 @@ function Results() {
   const handleClick = () => {
     navigate('/');
   }
+
+  const [showShare, setShowShare] = useState(false);
   
 
 
@@ -215,7 +218,9 @@ function Results() {
 
           {/* Buttons */}
           <div className='flex justify-around items-center w-full max-w-3xl'>
-            <div className='bg-white px-5 py-3 rounded-3xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{ color: dominantTrait.color}}>share results</div>
+            <div className='bg-white px-5 py-3 rounded-3xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{ color: dominantTrait.color}} onClick={() => setShowShare(true)}>share results</div>
+
+            <ShareModal show={showShare} onClose={() => setShowShare(false)} />
             <div 
               className='bg-white px-5 py-3 rounded-3xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{ color: dominantTrait.color }}
               onClick={handleClick}
