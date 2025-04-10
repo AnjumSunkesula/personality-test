@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  FaWhatsapp,
-  FaTwitter,
-  FaLinkedin,
-  FaFacebook,
-  FaPinterest,
-  FaReddit,
-  FaTimes
-} from "react-icons/fa";
+import { FaWhatsapp, FaTwitter, FaLinkedin, FaFacebook, FaPinterest, FaReddit, FaTimes } from "react-icons/fa";
 
 const ShareModal = ({ show, onClose }) => {
   const url = encodeURIComponent("https://personality-test-lake-five.vercel.app");
@@ -16,11 +8,17 @@ const ShareModal = ({ show, onClose }) => {
   if (!show) return null;
 
   return (
-    <div style={styles.overlay}>
-      <div style={styles.modal}>
-        <button onClick={onClose} style={styles.close}><FaTimes /></button>
-        <h3 style={{ marginBottom: "1rem" }}>Share your results</h3>
-        <div style={styles.icons}>
+    <div 
+      onClick={onClose}
+      className="fixed top-0 left-0 w-full h-full bg-black/50 flex items-center justify-center z-[1000]"
+    >
+      <div  
+        onClick={(e) => e.stopPropagation()}
+        className="bg-white p-8 rounded-lg w-70  text-center relative"
+      >
+        <button onClick={onClose} className="absolute top-2 right-2 bg-transparent border-none text-gray-500 hover:text-gray-700 "><FaTimes /></button>
+        <h3  className="text-xl font-semibold mb-6">Share your results</h3>
+        <div className="grid grid-cols-3 gap-y-6 mt-4 place-items-center">
           <a href={`https://wa.me/?text=${title}%20${url}`} target="_blank" rel="noopener noreferrer"><FaWhatsapp size={32} color="#25D366" /></a>
           <a href={`https://twitter.com/intent/tweet?text=${title}%20${url}`} target="_blank" rel="noopener noreferrer"><FaTwitter size={32} color="#1DA1F2" /></a>
           <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`} target="_blank" rel="noopener noreferrer"><FaLinkedin size={32} color="#0077B5" /></a>
@@ -32,26 +30,4 @@ const ShareModal = ({ show, onClose }) => {
     </div>
   );
 };
-
-const styles = {
-  overlay: {
-    position: "fixed", top: 0, left: 0, width: "100%", height: "100%",
-    backgroundColor: "rgba(0, 0, 0, 0.5)", display: "flex",
-    alignItems: "center", justifyContent: "center", zIndex: 1000
-  },
-  modal: {
-    background: "#fff", padding: "2rem", borderRadius: "10px",
-    width: "300px", textAlign: "center", position: "relative"
-  },
-  icons: {
-    display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", justifyItems: "center", alignItems: "center" ,marginTop: "1rem",
-  },
-  close: {
-    position: "absolute", top: "10px", right: "10px",
-    background: "none", border: "none", cursor: "pointer"
-  }
-};
-
 export default ShareModal;
-
-
