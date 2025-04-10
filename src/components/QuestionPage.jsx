@@ -59,7 +59,7 @@ function QuestionPage() {
             className='bg-white rounded-2xl p-6 space-y-5 w-80 sm:w-md md:w-lg flex flex-col gap-4 animate-slide-question'
             key={currentIndex}
           >
-            <div className='text-center font-semibold md:text-2xl'>{currentQuestion.question}</div>
+            <div className='text-center font-semibold text-lg md:text-2xl'>{currentQuestion.question}</div>
             <div className='space-y-2'>
               {currentQuestion.options.map((option, index) => (
                 <button
