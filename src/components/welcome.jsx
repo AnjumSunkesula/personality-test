@@ -13,7 +13,7 @@ function Welcome() {
 
   return(
     <>
-      <div className="flex flex-col justify-center items-center min-h-screen gap-8 bg-neutral-800">
+      <div className="flex flex-col justify-center items-center min-h-screen gap-8 bg-gray-100">
         <div className="w-36 h-36 bg-gradient-to-r from-violet-800  to-pink-400 rounded-full animate-bounce" style={{
           animationDuration: "5s",
           animationTimingFunction: "ease-in-out"
