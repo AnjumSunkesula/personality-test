@@ -36,7 +36,7 @@ function QuestionPage() {
           } 
         });
       }
-    }, 400);
+    }, 350);
   };
 
 
@@ -69,7 +69,7 @@ function QuestionPage() {
                   className="relative overflow-hidden w-full text-left border border-gray-200 rounded-xl py-4 ps-4 cursor-pointer"
                 >
                   <span
-                    className={`absolute inset-0 bg-indigo-500 transition-all duration-400 ease-out z-0 origin-left
+                    className={`absolute inset-0 bg-indigo-500 transition-all duration-350 ease-out z-0 origin-left
                       ${selectedOption === index ? 'scale-x-100' : 'scale-x-0'}
                     `}
                     style={{ transformOrigin: 'left' }}
