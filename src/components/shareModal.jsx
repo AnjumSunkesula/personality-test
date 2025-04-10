@@ -14,7 +14,7 @@ const ShareModal = ({ show, onClose }) => {
     >
       <div  
         onClick={(e) => e.stopPropagation()}
-        className="bg-white p-8 rounded-lg w-70  text-center relative"
+        className="bg-white p-8 rounded-lg w-70  text-center relative  transform transition-all duration-300 translate-y-0 opacity-100 animate-slide-up"
       >
         <button onClick={onClose} className="absolute top-2 right-2 bg-transparent border-none text-gray-500 hover:text-gray-700 "><FaTimes /></button>
         <h3  className="text-xl font-semibold mb-6">Share your results</h3>
