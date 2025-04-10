@@ -1,1 +1,43 @@
 @import "tailwindcss";
+
+/* mirror effect on trait description */
+@keyframes continuous-shine {
+  0% {
+    background-position: 200% 0, 0 0;
+  }
+
+  100% {
+    background-position: -100% 0, 0 0;
+  }
+}
+
+/* the question box */
+@keyframes slideQuestion {
+  0% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-question {
+  animation: slideQuestion 0.5s ease-in-out;
+}
+
+/* modal transform */
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100%{
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+}
+.animate-slide-up {
+  animation: slide-up 1s ease-out ;
+}

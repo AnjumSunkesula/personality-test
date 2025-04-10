@@ -65,7 +65,7 @@ const questions = [
       { text: "Take it personally", trait: "sensitive" },
       { text: "Seek clarification", trait: "self-aware" },
       { text: "Analyze Objectively", trait: "rational" },
-      { text: "Defenf your position", trait: "assertive" },
+      { text: "Defend your position", trait: "assertive" },
     ],
     category: "Emotional response"
   },
@@ -75,7 +75,7 @@ const questions = [
       { text: "Research deeply", trait: "analytical" },
       { text: "Discuss with others", trait: "social" },
       { text: "Follow Instructions", trait: "structured" },
-      { text: "Experiment hands-on", trait: "prectical" },
+      { text: "Experiment hands-on", trait: "practical" },
     ],
     category: "Learning style"
   },
@@ -83,7 +83,7 @@ const questions = [
     question: "Your approach to problem-solving is:",
     options: [
       { text: "Logical analysis", trait: "logical" },
-      { text: "Creative Brainstorming", trait: "reative" },
+      { text: "Creative Brainstorming", trait: "creative" },
       { text: "Team Collaboration", trait: "collaborative" },
       { text: "Step-by-step plan", trait: "methodical" },
     ],
