@@ -7,8 +7,8 @@ A fun and interactive personality test web app built with React. Users answer a 
 👋 Welcome page with smooth transitions
 ❓ Multiple-choice question pages
 📊 Dynamic results with trait percentages and bar charts
-🎨 Visually appealing UI with light/dark mode toggle
-🔗 Shareable results with a custom modal
+🎨 Visually appealing UI
+🔗 Shareable Quiz Link with a custom modal
 🔁 Fully responsive design
 
 🛠 TECH STACKS

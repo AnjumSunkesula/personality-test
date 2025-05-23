@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import questions from '../data/questions';
 import 'react-circular-progressbar/dist/styles.css'
 import { CircularProgressbar,buildStyles } from 'react-circular-progressbar';

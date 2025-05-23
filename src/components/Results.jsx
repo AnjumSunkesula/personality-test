@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import traits from '../data/traits';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip, Cell, CartesianGrid } from 'recharts';
@@ -218,7 +218,7 @@ function Results() {
 
           {/* Buttons */}
           <div className='flex justify-around items-center w-full max-w-3xl'>
-            <div className='bg-white px-5 py-3 rounded-3xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{ color: dominantTrait.color}} onClick={() => setShowShare(true)}>invite others</div>
+            <div className='bg-white px-5 py-3 rounded-3xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{ color: dominantTrait.color}} onClick={() => setShowShare(true)}>Share Quiz</div>
             <ShareModal show={showShare} onClose={() => setShowShare(false)} />
             <div 
               className='bg-white px-5 py-3 rounded-3xl shadow-md capitalize cursor-pointer hover:-translate-y-1 ease-in-out duration-400' style={{ color: dominantTrait.color }}
