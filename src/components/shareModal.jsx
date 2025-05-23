@@ -1,4 +1,3 @@
-import React from "react";
 import { FaWhatsapp, FaTwitter, FaLinkedin, FaFacebook, FaPinterest, FaReddit, FaTimes } from "react-icons/fa";
 
 const ShareModal = ({ show, onClose }) => {
